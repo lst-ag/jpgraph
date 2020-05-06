@@ -220,17 +220,11 @@ class Image {
         }
     }
 
-    static function GetWidth($aImg=null) {
-        if( $aImg === null ) {
-            $aImg = $this->img;
-        }
+    static function GetWidth($aImg) {
         return imagesx($aImg);
     }
 
-    static function GetHeight($aImg=null) {
-        if( $aImg === null ) {
-            $aImg = $this->img;
-        }
+    static function GetHeight($aImg) {
         return imagesy($aImg);
     }
 
@@ -2270,7 +2264,7 @@ class ImgStreamCache {
     // image file doesn't exist or exists but is to old
     function GetAndStream($aImage,$aCacheFileName) {
         if( $this->Isvalid($aCacheFileName) ) {
-            $this->StreamImgFile($aImage,$aCacheFileName);
+            return $this->StreamImgFile($aImage,$aCacheFileName);
         }
         else {
             return false;
